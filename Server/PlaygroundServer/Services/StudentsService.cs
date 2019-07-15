@@ -11,6 +11,7 @@ namespace PlaygroundServer.Services
         public StudentsService()
         {
             _students = InitializeStudents();
+            //_students = new List<Student>();
         }
 
         public IEnumerable<Student> GetStudents()
