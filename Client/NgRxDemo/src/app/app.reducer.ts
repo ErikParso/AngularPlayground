@@ -1,5 +1,4 @@
-import { createReducer, Action, ActionReducerMap, createSelector, createAction, props, on } from '@ngrx/store';
-import { userInfo } from 'os';
+import { createReducer, ActionReducerMap, createSelector, createAction, props, on } from '@ngrx/store';
 
 export interface State {
     userInfo: UserInfoState;

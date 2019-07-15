@@ -1,5 +1,6 @@
 <div>
-    name: {{ name$ | async }}, age: {{ age$ | async }}
-    <button (click)="increaseAge()">Increase age</button>
+    app-component <br>
+    name: {{ name$ | async }} <br> 
+    age: {{ age$ | async }} <button (click)="increaseAge()">Increase</button>
     <router-outlet></router-outlet>
 </div>
