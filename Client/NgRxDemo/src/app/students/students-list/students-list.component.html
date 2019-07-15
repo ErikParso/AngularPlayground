@@ -1,6 +1,9 @@
 <div>
   students-list-component
   <ul>
-    <li *ngFor="let student of students$| async">{{student.name}}</li>
+    <li *ngFor="let student of students$| async" (click)="setCurrentStudent(student)">{{student.name}}</li>
   </ul>
+  <p *ngIf="currentStudent | async; let currentStudent">
+    {{currentStudent?.name}}
+  </p>
 </div>

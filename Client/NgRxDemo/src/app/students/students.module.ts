@@ -5,12 +5,15 @@ import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsListComponent } from './students-list/students-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { StudentsService } from './Services/students.service';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './students.reducer';
 
 @NgModule({
   imports: [
     CommonModule,
     StudentsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forFeature('students', reducer)
   ],
   declarations: [
     StudentsComponent,
