@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using PlaygroundServer.Model;
+using PlaygroundServer.Services;
 
 namespace PlaygroundServer.Controllers
 {
@@ -9,10 +7,15 @@ namespace PlaygroundServer.Controllers
     [ApiController]
     public class StudentsController : Controller
     {    
+        private readonly StudentsService _studentsService;
+
+        public StudentsController(StudentsService studentsService)
+        {
+            _studentsService = studentsService;
+        }
+
         [HttpGet]
         public IActionResult GetAllStudents()
-        {
-            return Ok();
-        }
+            => Ok(_studentsService.GetStudents());
     }
 }
