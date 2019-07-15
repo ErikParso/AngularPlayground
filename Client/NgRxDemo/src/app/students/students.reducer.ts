@@ -13,11 +13,11 @@ export const initialState: StudentsState = {
     currentStudent: null
 };
 
-export interface AppState extends fromRoot.AppState {
+export interface State extends fromRoot.State {
     students: StudentsState;
 }
 
-export const studentsSelector = (state: AppState) => state.students;
+export const studentsSelector = (state: State) => state.students;
 
 export const currentStudentSelector = createSelector(
     studentsSelector,

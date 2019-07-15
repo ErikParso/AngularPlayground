@@ -4,8 +4,8 @@ import { Student } from '../Models/student';
 import { StudentsService } from '../Services/students.service';
 import { Store, select } from '@ngrx/store';
 import { setCurrentStudent } from '../students.actions';
-import { StudentsState, currentStudentSelector } from '../students.reducer';
-import { AppState } from 'src/app/app.reducer';
+import { currentStudentSelector } from '../students.reducer';
+import { State } from 'src/app/app.reducer';
 
 @Component({
   selector: 'app-students-list',
@@ -19,7 +19,7 @@ export class StudentsListComponent implements OnInit {
 
   constructor(
     private studentsService: StudentsService,
-    private store: Store<AppState>) { }
+    private store: Store<State>) { }
 
   ngOnInit() {
     this.students$ = this.studentsService.GetStudents();

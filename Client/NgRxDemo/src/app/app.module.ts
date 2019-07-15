@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { reducers } from './app.reducer';
 
 @NgModule({
    declarations: [
@@ -14,7 +15,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
    imports: [
       BrowserModule,
       AppRoutingModule,
-      StoreModule.forRoot({}),
+      StoreModule.forRoot(reducers),
       StoreDevtoolsModule.instrument(),
    ],
    providers: [],
