@@ -14,6 +14,9 @@ import {MatTableModule} from '@angular/material/table';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   imports: [
@@ -24,7 +27,10 @@ import { MatButtonModule } from '@angular/material/button';
     EffectsModule.forFeature([StudentsEffects]),
     MatTableModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatChipsModule
   ],
   declarations: [
     StudentsComponent,
