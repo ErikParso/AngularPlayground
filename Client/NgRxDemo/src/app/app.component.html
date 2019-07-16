@@ -4,6 +4,13 @@
         <mat-toolbar color="primary" class="header mat-elevation-z2">
             <span>Menu</span>
         </mat-toolbar>
+        
+        <mat-nav-list class="content">
+            <a mat-list-item routerLink="/students" (click)="sideNav.close()">
+                <mat-icon>home</mat-icon><span class="nav-caption">Home</span>
+            </a>
+        </mat-nav-list>
+
     </mat-sidenav>
 
     <mat-sidenav-content>

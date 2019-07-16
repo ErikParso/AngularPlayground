@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material';
 
 @NgModule({
    declarations: [
@@ -31,7 +32,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
       MatIconModule,
       MatToolbarModule,
       MatButtonModule,
-      MatSidenavModule
+      MatSidenavModule,
+      MatListModule
    ],
    providers: [],
    bootstrap: [
