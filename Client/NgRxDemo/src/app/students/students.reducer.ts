@@ -39,7 +39,7 @@ export const errorMessageSelector = createSelector(
 const studentsReducer = createReducer<StudentsState>(
     initialState,
     on(StudentsActions.setCurrentStudent, (state, {payload}) => ({ ...state, currentStudent: payload })),
-    on(StudentsActions.loadStudentsSuccess, (state, {payload}) => ({ ...state, allStudents: payload })),
+    on(StudentsActions.loadStudentsSuccess, (state, {payload}) => ({ ...state, allStudents: payload, currentStudent: payload[0] })),
     on(StudentsActions.loadStudentsError, (state) => ({ ...state, errorMessage: 'Load students failed' }))
 );
 
