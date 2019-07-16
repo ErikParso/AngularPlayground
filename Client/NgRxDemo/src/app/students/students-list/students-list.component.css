@@ -1,5 +1,5 @@
 table {
-width: 100%;
+   width: 100%;
 }
 
 .currentRow {
@@ -9,6 +9,5 @@ width: 100%;
 
 .table-container {
     max-height: 100%;
-    width: 100%;
     overflow: auto;
-  }
+}
