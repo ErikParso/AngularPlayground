@@ -1,29 +1,35 @@
-<mat-toolbar color="primary" class="example-header mat-elevation-z2">
-    <mat-toolbar-row>
-        
-        <span>Angular playground</span>
-        <span class="example-spacer"></span>
-        
-        <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>account_circle</mat-icon>
-            {{name$ | async}}
-        </button>
+<mat-sidenav-container #sideNav>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>exit_to_app</mat-icon>
-                <span>Logout</span>
-            </button>
-        </mat-menu>
-
-    </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened [fixedInViewport]="false" class="example-sidenav">
-        Sidenav content
+    <mat-sidenav mode="over" opened fixedInViewport="false">
+        <mat-toolbar color="primary" class="header mat-elevation-z2">
+            <span>Menu</span>
+        </mat-toolbar>
     </mat-sidenav>
+
     <mat-sidenav-content>
-        <router-outlet></router-outlet>
+
+        <mat-toolbar color="primary" class="header mat-elevation-z2">
+            <button mat-icon-button (click)="sideNav.open()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>Angular playground</span>
+            <span class="spacer"></span>
+            <button mat-button [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+                {{name$ | async}}
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </mat-toolbar>
+
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+
     </mat-sidenav-content>
+
 </mat-sidenav-container>
