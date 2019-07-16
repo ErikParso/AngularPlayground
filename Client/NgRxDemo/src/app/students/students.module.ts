@@ -10,17 +10,26 @@ import { reducer } from './students.reducer';
 import { StudentsEffects } from './students.effects';
 import { EffectsModule } from '@ngrx/effects';
 
+import {MatTableModule} from '@angular/material/table';
+import { StudentDetailComponent } from './student-detail/student-detail.component';
+import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   imports: [
     CommonModule,
     StudentsRoutingModule,
     HttpClientModule,
     StoreModule.forFeature('students', reducer),
-    EffectsModule.forFeature([StudentsEffects])
+    EffectsModule.forFeature([StudentsEffects]),
+    MatTableModule,
+    MatCardModule,
+    MatButtonModule
   ],
   declarations: [
     StudentsComponent,
-    StudentsListComponent
+    StudentsListComponent,
+    StudentDetailComponent
   ],
   providers: [
     StudentsService

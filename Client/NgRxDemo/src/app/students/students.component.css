@@ -1,4 +1,11 @@
-div {
-    background:lightskyblue;
-    padding: 10px;
+.splitscreen {
+    display:flex;
+}
+.splitscreen .left {
+    flex: 2;
+    margin: 20px;
+}
+.splitscreen .right {
+    flex: 3;
+    margin: 20px;
 }

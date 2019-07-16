@@ -1,4 +1,8 @@
-div {
-    background: lightblue;
-    padding: 10px;
+table {
+    width: 100%;
+}
+
+.currentRow {
+   background: royalblue;
+   color: white;
 }

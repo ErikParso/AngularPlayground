@@ -16,6 +16,7 @@ export class StudentsListComponent implements OnInit {
   students$: Observable<Student[]>;
   currentStudent$: Observable<Student>;
   errorMessage$: Observable<string>;
+  displayedColumns: string[] = ['name', 'birthDay'];
 
   constructor(private store: Store<State>) { }
 
