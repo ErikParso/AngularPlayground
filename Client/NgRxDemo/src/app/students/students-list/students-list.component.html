@@ -1,5 +1,8 @@
 <div>
   students-list-component
+  <p *ngIf="errorMessage$ | async; let errorMessage">
+    {{errorMessage}}
+  </p>
   <ul>
     <li *ngFor="let student of students$ | async" (click)="setCurrentStudent(student)">{{student.name}}</li>
   </ul>

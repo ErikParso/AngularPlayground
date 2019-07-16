@@ -31,6 +31,11 @@ export const allStudentsSelector = createSelector(
     (state: StudentsState) => state.allStudents
 );
 
+export const errorMessageSelector = createSelector(
+    studentsSelector,
+    (state: StudentsState) => state.errorMessage
+);
+
 const studentsReducer = createReducer<StudentsState>(
     initialState,
     on(StudentsActions.setCurrentStudent, (state, {payload}) => ({ ...state, currentStudent: payload })),
