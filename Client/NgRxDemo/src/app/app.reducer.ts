@@ -23,7 +23,7 @@ export const ageSelector = createSelector(
 );
 
 const appReducer = createReducer<UserInfoState>(
-    { name: 'Erik', age: 25 },
+    { name: 'Erik Parso', age: 25 },
     on(setName, (s, p) => ({...s, name: p.value})),
     on(increaseAge, (s) => ({...s, age: s.age + 1}))
 );

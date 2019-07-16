@@ -1,6 +1,24 @@
-<div>
-    app-component <br>
-    name: {{ name$ | async }} <br> 
-    age: {{ age$ | async }} <button (click)="increaseAge()">Increase</button>
-    <router-outlet></router-outlet>
-</div>
+<mat-toolbar color="primary">
+
+    <mat-toolbar-row>
+
+        <span>Angular playground</span>
+        <span class="example-spacer"></span>
+
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>account_circle</mat-icon>
+            {{name$ | async}}
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+
+    </mat-toolbar-row>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

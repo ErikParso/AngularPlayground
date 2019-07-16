@@ -9,6 +9,12 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { reducers } from './app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
    declarations: [
       AppComponent
@@ -19,6 +25,11 @@ import { EffectsModule } from '@ngrx/effects';
       StoreModule.forRoot(reducers),
       EffectsModule.forRoot([]),
       StoreDevtoolsModule.instrument(),
+      BrowserAnimationsModule,
+      MatMenuModule,
+      MatIconModule,
+      MatToolbarModule,
+      MatButtonModule
    ],
    providers: [],
    bootstrap: [
