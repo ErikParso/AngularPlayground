@@ -10,7 +10,7 @@ export class StudentsService {
 
   constructor(private http: HttpClient) { }
 
-  public GetStudents(): Observable<Student> {
-    return this.http.get<Student>(this.getStudentsUrl).pipe();
+  public getStudents(): Observable<Student[]> {
+    return this.http.get<Student[]>(this.getStudentsUrl);
   }
 }

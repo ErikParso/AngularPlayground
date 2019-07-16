@@ -4,13 +4,15 @@ import * as StudentsActions from './students.actions';
 import * as fromRoot from '../app.reducer';
 
 export interface StudentsState {
-    students: Student[];
+    allStudents: Student[];
     currentStudent: Student;
+    errorMessage: string;
 }
 
 export const initialState: StudentsState = {
-    students: [],
-    currentStudent: null
+    allStudents: [],
+    currentStudent: null,
+    errorMessage: null
 };
 
 export interface State extends fromRoot.State {
@@ -24,9 +26,16 @@ export const currentStudentSelector = createSelector(
     (state: StudentsState) => state.currentStudent
 );
 
+export const allStudentsSelector = createSelector(
+    studentsSelector,
+    (state: StudentsState) => state.allStudents
+);
+
 const studentsReducer = createReducer<StudentsState>(
     initialState,
-    on(StudentsActions.setCurrentStudent, (state, payLoad) => ({ ...state, currentStudent: payLoad }))
+    on(StudentsActions.setCurrentStudent, (state, payLoad) => ({ ...state, currentStudent: payLoad })),
+    on(StudentsActions.loadStudentsSuccess, (state, payload) => ({ ...state, allStudents: payload.value })),
+    on(StudentsActions.loadStudentsError, (state) => ({ ...state, errorMessage: 'Load students failed' }))
 );
 
 export function reducer(state: StudentsState, action: Action) {

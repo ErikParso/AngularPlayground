@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { Student } from '../Models/student';
 import { StudentsService } from '../Services/students.service';
 import { Store, select } from '@ngrx/store';
-import { setCurrentStudent } from '../students.actions';
-import { currentStudentSelector } from '../students.reducer';
+import { setCurrentStudent, loadStudents } from '../students.actions';
+import { currentStudentSelector, allStudentsSelector } from '../students.reducer';
 import { State } from 'src/app/app.reducer';
 
 @Component({
@@ -14,16 +14,15 @@ import { State } from 'src/app/app.reducer';
 })
 export class StudentsListComponent implements OnInit {
 
-  students$: Observable<Student>;
-  currentStudent: Observable<Student>;
+  students$: Observable<Student[]>;
+  currentStudent$: Observable<Student>;
 
-  constructor(
-    private studentsService: StudentsService,
-    private store: Store<State>) { }
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
-    this.students$ = this.studentsService.GetStudents();
-    this.currentStudent = this.store.pipe(select(currentStudentSelector));
+    this.students$ = this.store.pipe(select(allStudentsSelector));
+    this.currentStudent$ = this.store.pipe(select(currentStudentSelector));
+    this.store.dispatch(loadStudents());
   }
 
   setCurrentStudent(student: Student) {

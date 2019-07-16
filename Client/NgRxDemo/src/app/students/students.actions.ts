@@ -7,7 +7,11 @@ export const loadStudents = createAction(
 
 export const loadStudentsSuccess = createAction(
     '[Students] Load students success',
-    props<{students: Student[]}>()
+    props<{value: Student[]}>()
+);
+
+export const loadStudentsError = createAction(
+    '[Students] Load students error'
 );
 
 export const setCurrentStudent = createAction(
