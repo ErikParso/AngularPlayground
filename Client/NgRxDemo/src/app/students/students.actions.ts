@@ -7,7 +7,7 @@ export const loadStudents = createAction(
 
 export const loadStudentsSuccess = createAction(
     '[Students] Load students success',
-    props<{value: Student[]}>()
+    props<{payload: Student[]}>()
 );
 
 export const loadStudentsError = createAction(
@@ -16,5 +16,5 @@ export const loadStudentsError = createAction(
 
 export const setCurrentStudent = createAction(
     '[Students] Set current student',
-    props<Student>()
+    props<{payload: Student}>()
 );

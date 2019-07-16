@@ -12,7 +12,7 @@ export class StudentsEffects {
     ofType(loadStudents().type),
     mergeMap(() => this.studentsService.getStudents()
       .pipe(
-        map(students => loadStudentsSuccess({value: students})),
+        map(students => loadStudentsSuccess({payload: students})),
         catchError(() => of (loadStudentsError()))
       ))
     )

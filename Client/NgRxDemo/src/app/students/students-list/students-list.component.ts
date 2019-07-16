@@ -26,6 +26,6 @@ export class StudentsListComponent implements OnInit {
   }
 
   setCurrentStudent(student: Student) {
-    this.store.dispatch(setCurrentStudent(student));
+    this.store.dispatch(setCurrentStudent({payload: student}));
   }
 }
