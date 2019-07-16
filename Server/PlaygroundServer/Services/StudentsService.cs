@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PlaygroundServer.Model;
 
 namespace PlaygroundServer.Services
@@ -10,7 +11,7 @@ namespace PlaygroundServer.Services
 
         public StudentsService()
         {
-            _students = InitializeStudents();
+            _students = Enumerable.Range(0,50).SelectMany(i => InitializeStudents()).ToList();
             //_students = new List<Student>();
         }
 
