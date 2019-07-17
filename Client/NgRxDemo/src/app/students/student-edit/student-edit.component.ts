@@ -6,11 +6,17 @@ import { Student } from '../Models/student';
   templateUrl: './student-edit.component.html',
   styleUrls: ['./student-edit.component.css']
 })
-export class StudentEditComponent {
+export class StudentEditComponent implements OnInit {
+
+  isEdit: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<StudentEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Student) {}
+
+    ngOnInit(): void {
+      this.isEdit = this.data.id !== 0;
+    }
 
     onNoClick(): void {
       this.dialogRef.close();

@@ -21,7 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { StudentEditComponent } from './student-edit/student-edit.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule } from '@angular/material';
+import { MatInputModule, MatNativeDateModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -39,7 +40,9 @@ import { MatInputModule } from '@angular/material';
     MatChipsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: [
     StudentsComponent,

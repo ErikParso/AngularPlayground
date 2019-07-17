@@ -26,7 +26,7 @@ export class StudentDetailComponent implements OnInit {
 
   addStudent() {
     const dialogRef = this.dialog.open<StudentEditComponent, Student, Student>(
-      StudentEditComponent, { width: '250px', data: { id: 0, name: '', birthDay: null, notes: [] }});
+      StudentEditComponent, { width: '300px', data: { id: 0, name: '', birthDay: null, notes: [] }});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
