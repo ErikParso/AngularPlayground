@@ -40,7 +40,7 @@ export class StudentDetailComponent implements OnInit {
 
   editStudent(student: Student) {
     const dialogRef = this.dialog.open<StudentEditComponent, Student, Student>(
-      StudentEditComponent, { width: '300px', data: { ...student } });
+      StudentEditComponent, { width: '300px', data: JSON.parse(JSON.stringify(student)) });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
