@@ -30,7 +30,7 @@ export class StudentsEffects {
     ofType<StudentActions.EditStudentAction>(StudentActions.StudentActions.editStudent),
     mergeMap(action => this.studentsService.putStudent(action.payload)
       .pipe(
-        map(student => StudentActions.EditStudentSuccess({ payload: student })),
+        map(student => new StudentActions.EditStudentSuccessAction(student)),
         catchError(() => of(StudentActions.addStudentError()))
       ))
   ));

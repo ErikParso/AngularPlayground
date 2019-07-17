@@ -1,4 +1,4 @@
-import { createAction, props, Action } from '@ngrx/store';
+import { createAction, props, Action, ActionCreator } from '@ngrx/store';
 import { Student } from './Models/student';
 
 export enum StudentActions {
@@ -55,6 +55,11 @@ export const EditStudentSuccess = createAction(
     StudentActions.editStudentSuccess,
     props<{ payload: Student }>()
 );
+
+export class EditStudentSuccessAction implements Action {
+    type = StudentActions.editStudentSuccess;
+    constructor(public payload: Student) { }
+}
 
 export const EditStudentError = createAction(
     StudentActions.editStudentError
