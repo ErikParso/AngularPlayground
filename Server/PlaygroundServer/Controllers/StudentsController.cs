@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PlaygroundServer.Model;
 using PlaygroundServer.Services;
 
 namespace PlaygroundServer.Controllers
@@ -17,5 +18,16 @@ namespace PlaygroundServer.Controllers
         [HttpGet]
         public IActionResult GetAllStudents()
             => Ok(_studentsService.GetStudents());
+
+        [HttpPost]
+        public IActionResult AddNewStudent(Student student)
+            => Ok(_studentsService.AddNewStudent(student));
+
+        [HttpPut]
+        public IActionResult UpdateStudent(Student student)
+        {
+            _studentsService.UpdateStudent(student);
+            return Ok();
+        }
     }
 }
