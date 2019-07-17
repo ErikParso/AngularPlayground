@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { StudentsService } from './Services/students.service';
-import { map, mergeMap, catchError, concatMap } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap, concatMap, takeWhile } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as StudentActions from './students.actions';
 import { of } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
+import { Store } from '@ngrx/store';
+import { State } from '../app.reducer';
 
 @Injectable()
 export class StudentsEffects {
@@ -22,6 +25,8 @@ export class StudentsEffects {
     mergeMap(action => this.studentsService.postStudent(action.payload)
       .pipe(
         map(student => StudentActions.addStudentSuccess({ payload: student })),
+        tap(student => this.snackBar.open('New student', 'open')
+          .onAction().subscribe(() => this.store.dispatch(StudentActions.setCurrentStudent(student)))),
         catchError(() => of(StudentActions.addStudentError()))
       ))
   ));
@@ -37,6 +42,8 @@ export class StudentsEffects {
 
   constructor(
     private actions$: Actions,
-    private studentsService: StudentsService
+    private studentsService: StudentsService,
+    private snackBar: MatSnackBar,
+    private store: Store<State>
   ) { }
 }
