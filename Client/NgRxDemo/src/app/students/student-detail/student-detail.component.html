@@ -11,7 +11,7 @@
       </mat-chip-list>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>EDIT</button>
+      <button mat-button (click)="editStudent(currentStudent)">EDIT</button>
       <button mat-button>DELETE</button>
       <button mat-button (click)="addStudent()">ADD NEW</button>
     </mat-card-actions>

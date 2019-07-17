@@ -38,9 +38,15 @@ export const errorMessageSelector = createSelector(
 
 const studentsReducer = createReducer<StudentsState>(
     initialState,
-    on(StudentsActions.setCurrentStudent, (state, {payload}) => ({ ...state, currentStudent: payload })),
-    on(StudentsActions.loadStudentsSuccess, (state, {payload}) => ({ ...state, allStudents: payload, currentStudent: payload[0] })),
-    on(StudentsActions.loadStudentsError, (state) => ({ ...state, errorMessage: 'Load students failed' }))
+    on(StudentsActions.setCurrentStudent, (state, { payload }) => ({ ...state, currentStudent: payload })),
+    on(StudentsActions.loadStudentsSuccess, (state, { payload }) => ({ ...state, allStudents: payload, currentStudent: payload[0] })),
+    on(StudentsActions.loadStudentsError, (state) => ({ ...state, errorMessage: 'Load students failed' })),
+    on(StudentsActions.addStudentSuccess, (state, { payload }) => ({ ...state, allStudents: state.allStudents.concat(payload) })),
+    on(StudentsActions.EditStudentSuccess, (state, { payload }) => ({
+        ...state,
+        allStudents: state.allStudents.filter(s => s.id !== payload.id).concat(payload),
+        currentStudent: payload
+    }))
 );
 
 export function reducer(state: StudentsState, action: Action) {

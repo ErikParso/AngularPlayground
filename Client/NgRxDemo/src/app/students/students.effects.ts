@@ -1,25 +1,42 @@
 import { Injectable } from '@angular/core';
 import { StudentsService } from './Services/students.service';
-import { map, mergeMap, catchError } from 'rxjs/operators';
+import { map, mergeMap, catchError, concatMap } from 'rxjs/operators';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { loadStudents, loadStudentsSuccess, loadStudentsError } from './students.actions';
+import * as StudentActions from './students.actions';
 import { of } from 'rxjs';
 
 @Injectable()
 export class StudentsEffects {
 
-  loadMovies$ = createEffect(() => this.actions$.pipe(
-    ofType(loadStudents().type),
+  loadStudents$ = createEffect(() => this.actions$.pipe(
+    ofType(StudentActions.StudentActions.loadStudents),
     mergeMap(() => this.studentsService.getStudents()
       .pipe(
-        map(students => loadStudentsSuccess({payload: students})),
-        catchError(() => of (loadStudentsError()))
+        map(students => StudentActions.loadStudentsSuccess({ payload: students })),
+        catchError(() => of(StudentActions.loadStudentsError()))
       ))
-    )
-  );
+  ));
+
+  addStudent$ = createEffect(() => this.actions$.pipe(
+    ofType<StudentActions.AddStudentAction>(StudentActions.StudentActions.addStudent),
+    mergeMap(action => this.studentsService.postStudent(action.payload)
+      .pipe(
+        map(student => StudentActions.addStudentSuccess({ payload: student })),
+        catchError(() => of(StudentActions.addStudentError()))
+      ))
+  ));
+
+  editStudent$ = createEffect(() => this.actions$.pipe(
+    ofType<StudentActions.EditStudentAction>(StudentActions.StudentActions.editStudent),
+    mergeMap(action => this.studentsService.putStudent(action.payload)
+      .pipe(
+        map(student => StudentActions.EditStudentSuccess({ payload: student })),
+        catchError(() => of(StudentActions.addStudentError()))
+      ))
+  ));
 
   constructor(
     private actions$: Actions,
     private studentsService: StudentsService
-  ) {}
+  ) { }
 }
